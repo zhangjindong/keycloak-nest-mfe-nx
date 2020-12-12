@@ -16,7 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@keycloak-nest-mfe2/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@keycloak-nest-mfe-nx/api-interfaces": ["libs/api-interfaces/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -13,7 +13,7 @@
       "prefix": "keycloak-nest-mfe2",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/apps/shell",
             "index": "apps/shell/src/index.html",
@@ -28,7 +28,8 @@
             "styles": [
               "apps/shell/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "apps/shell/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -56,19 +57,23 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "apps/shell/webpack.prod.config.js"
             }
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
             "browserTarget": "shell:build",
-            "proxyConfig": "apps/shell/proxy.conf.json"
+            "proxyConfig": "apps/shell/proxy.conf.json",
+            "extraWebpackConfig": "apps/shell/webpack.config.js",
+            "port": 4200
           },
           "configurations": {
             "production": {
-              "browserTarget": "shell:build:production"
+              "browserTarget": "shell:build:production",
+              "extraWebpackConfig": "apps/shell/webpack.prod.config.js"
             }
           }
         },
@@ -87,10 +92,11 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "ngx-build-plus:karma",
           "options": {
             "jestConfig": "apps/shell/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "extraWebpackConfig": "apps/shell/webpack.config.js"
           }
         }
       }
