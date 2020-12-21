@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 
-import { Message } from '@keycloak-nest-mfe-nx/api-interfaces';
+import { Message } from '@keycloak-nest-mfe2/api-interfaces';
 
 import { AppService } from './app.service';
 

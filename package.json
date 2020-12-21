@@ -32,7 +32,6 @@
     "webpack": "5.10.0"
   },
   "dependencies": {
-    "@angular-architects/module-federation": "^1.2.2",
     "@angular/animations": "^11.0.4",
     "@angular/common": "^11.0.4",
     "@angular/compiler": "^11.0.4",
