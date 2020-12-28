@@ -23,17 +23,27 @@
     }
   },
   "projects": {
-    "shell": {
-      "tags": []
-    },
-    "shell-e2e": {
-      "tags": [],
-      "implicitDependencies": ["shell"]
-    },
     "api": {
       "tags": []
     },
     "api-interfaces": {
+      "tags": []
+    },
+    "system-platform": {
+      "tags": []
+    },
+    "system-platform-e2e": {
+      "tags": [],
+      "implicitDependencies": ["system-platform"]
+    },
+    "r-factoring": {
+      "tags": []
+    },
+    "r-factoring-e2e": {
+      "tags": [],
+      "implicitDependencies": ["r-factoring"]
+    },
+    "system-platform-feature-welcome": {
       "tags": []
     }
   }

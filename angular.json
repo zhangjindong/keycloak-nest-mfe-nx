@@ -1,33 +1,102 @@
 {
   "version": 1,
   "projects": {
-    "shell": {
+    "api": {
+      "root": "apps/api",
+      "sourceRoot": "apps/api/src",
+      "projectType": "application",
+      "prefix": "api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/api",
+            "main": "apps/api/src/main.ts",
+            "tsConfig": "apps/api/tsconfig.app.json",
+            "assets": ["apps/api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/src/environments/environment.ts",
+                  "with": "apps/api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "api:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/api/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-interfaces": {
+      "root": "libs/api-interfaces",
+      "sourceRoot": "libs/api-interfaces/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api-interfaces/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "system-platform": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "apps/shell",
-      "sourceRoot": "apps/shell/src",
+      "root": "apps/system-platform",
+      "sourceRoot": "apps/system-platform/src",
       "prefix": "keycloak-nest-mfe2",
       "architect": {
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/apps/shell",
-            "index": "apps/shell/src/index.html",
-            "main": "apps/shell/src/main.ts",
-            "polyfills": "apps/shell/src/polyfills.ts",
-            "tsConfig": "apps/shell/tsconfig.app.json",
+            "outputPath": "dist/apps/system-platform",
+            "index": "apps/system-platform/src/index.html",
+            "main": "apps/system-platform/src/main.ts",
+            "polyfills": "apps/system-platform/src/polyfills.ts",
+            "tsConfig": "apps/system-platform/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "apps/shell/src/favicon.ico",
-              "apps/shell/src/assets"
+              "apps/system-platform/src/favicon.ico",
+              "apps/system-platform/src/assets"
             ],
-            "styles": [
-              "apps/shell/src/styles.scss"
-            ],
+            "styles": ["apps/system-platform/src/styles.scss"],
             "scripts": [],
             "customWebpackConfig": {
               "path": "webpack.config.js"
@@ -37,8 +106,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/shell/src/environments/environment.ts",
-                  "with": "apps/shell/src/environments/environment.prod.ts"
+                  "replace": "apps/system-platform/src/environments/environment.ts",
+                  "with": "apps/system-platform/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -66,147 +135,212 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "shell:build",
-            "proxyConfig": "apps/shell/proxy.conf.json"
+            "browserTarget": "system-platform:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "shell:build:production"
+              "browserTarget": "system-platform:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "shell:build"
+            "browserTarget": "system-platform:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/shell/src/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/system-platform/src/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/shell/jest.config.js",
+            "jestConfig": "apps/system-platform/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "shell-e2e": {
-      "root": "apps/shell-e2e",
-      "sourceRoot": "apps/shell-e2e/src",
+    "system-platform-e2e": {
+      "root": "apps/system-platform-e2e",
+      "sourceRoot": "apps/system-platform-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/shell-e2e/cypress.json",
-            "tsConfig": "apps/shell-e2e/tsconfig.e2e.json",
-            "devServerTarget": "shell:serve"
+            "cypressConfig": "apps/system-platform-e2e/cypress.json",
+            "tsConfig": "apps/system-platform-e2e/tsconfig.e2e.json",
+            "devServerTarget": "system-platform:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "shell:serve:production"
+              "devServerTarget": "system-platform:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/shell-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/system-platform-e2e/**/*.{js,ts}"]
           }
         }
       }
     },
-    "api": {
-      "root": "apps/api",
-      "sourceRoot": "apps/api/src",
+    "r-factoring": {
       "projectType": "application",
-      "prefix": "api",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/r-factoring",
+      "sourceRoot": "apps/r-factoring/src",
+      "prefix": "keycloak-nest-mfe2",
       "architect": {
         "build": {
-          "builder": "@nrwl/node:build",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/apps/api",
-            "main": "apps/api/src/main.ts",
-            "tsConfig": "apps/api/tsconfig.app.json",
+            "outputPath": "dist/apps/r-factoring",
+            "index": "apps/r-factoring/src/index.html",
+            "main": "apps/r-factoring/src/main.ts",
+            "polyfills": "apps/r-factoring/src/polyfills.ts",
+            "tsConfig": "apps/r-factoring/tsconfig.app.json",
+            "aot": true,
             "assets": [
-              "apps/api/src/assets"
-            ]
+              "apps/r-factoring/src/favicon.ico",
+              "apps/r-factoring/src/assets"
+            ],
+            "styles": ["apps/r-factoring/src/styles.scss"],
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "webpack.config.js"
+            }
           },
           "configurations": {
             "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "apps/api/src/environments/environment.ts",
-                  "with": "apps/api/src/environments/environment.prod.ts"
+                  "replace": "apps/r-factoring/src/environments/environment.ts",
+                  "with": "apps/r-factoring/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ]
             }
           }
         },
         "serve": {
-          "builder": "@nrwl/node:execute",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "buildTarget": "api:build"
+            "browserTarget": "r-factoring:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "r-factoring:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "r-factoring:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/api/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/r-factoring/src/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/api/jest.config.js",
+            "jestConfig": "apps/r-factoring/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "api-interfaces": {
-      "root": "libs/api-interfaces",
-      "sourceRoot": "libs/api-interfaces/src",
+    "r-factoring-e2e": {
+      "root": "apps/r-factoring-e2e",
+      "sourceRoot": "apps/r-factoring-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/r-factoring-e2e/cypress.json",
+            "tsConfig": "apps/r-factoring-e2e/tsconfig.e2e.json",
+            "devServerTarget": "r-factoring:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "r-factoring:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/r-factoring-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "system-platform-feature-welcome": {
       "projectType": "library",
-      "schematics": {},
+      "root": "libs/system-platform/feature-welcome",
+      "sourceRoot": "libs/system-platform/feature-welcome/src",
+      "prefix": "keycloak-nest-mfe2",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/api-interfaces/**/*.ts"
+              "libs/system-platform/feature-welcome/src/**/*.ts"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/api-interfaces/jest.config.js",
+            "jestConfig": "libs/system-platform/feature-welcome/jest.config.js",
             "passWithNoTests": true
           }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
         }
       }
     }
   },
   "cli": {
     "defaultCollection": "@nrwl/angular",
-    "packageManager": "yarn"
+    "packageManager": "yarn",
+    "style": "scss"
   },
   "schematics": {
     "@nrwl/angular": {
@@ -228,5 +362,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "defaultProject": "shell"
+  "defaultProject": "system-platform"
 }
