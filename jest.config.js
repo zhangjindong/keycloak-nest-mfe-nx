@@ -6,5 +6,7 @@ module.exports = {
     '<rootDir>/apps/system-platform',
     '<rootDir>/apps/r-factoring',
     '<rootDir>/libs/system-platform/feature-welcome',
+    '<rootDir>/libs/api/share/share-core',
+    '<rootDir>/libs/api/share/keycloak-app',
   ],
 };

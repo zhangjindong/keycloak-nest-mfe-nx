@@ -21,6 +21,12 @@
       ],
       "@keycloak-nest-mfe2/system-platform/feature-welcome": [
         "libs/system-platform/feature-welcome/src/index.ts"
+      ],
+      "@keycloak-nest-mfe2/api/share/share-core": [
+        "libs/api/share/share-core/src/index.ts"
+      ],
+      "@keycloak-nest-mfe2/api/share/keycloak-app": [
+        "libs/api/share/keycloak-app/src/index.ts"
       ]
     }
   },

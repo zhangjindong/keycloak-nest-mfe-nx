@@ -45,6 +45,12 @@
     },
     "system-platform-feature-welcome": {
       "tags": []
+    },
+    "api-share-share-core": {
+      "tags": []
+    },
+    "api-share-keycloak-app": {
+      "tags": []
     }
   }
 }
