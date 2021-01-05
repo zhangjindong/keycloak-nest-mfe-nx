@@ -3,7 +3,6 @@ import {
   CLIENT_CONNECT,
   CLIENT_CONNECT_NAME,
 } from './client-connect.constants';
-import Keycloak = require('keycloak-connect');
 import * as KeycloakConnect from 'keycloak-connect';
 import { KEYCLOAK_INSTANCE } from './constants';
 

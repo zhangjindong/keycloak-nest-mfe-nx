@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { Options } from './options.interface';
 import { Observable, from, of } from 'rxjs';
 import * as keycloakClientRegistration from 'keycloak-client-registration';
@@ -28,6 +28,7 @@ export class KeycloakRegistrationService {
    * @memberof KeycloakRegistrationService
    */
   createClient(options: Options, client: any): Observable<any> {
+    Logger.log('',JSON.stringify(options) )
     return from(keycloakClientRegistration.create(options, client));
   }
 }

@@ -1,7 +1,7 @@
-import { EXPRESS_STORE } from '@keycloak-nest-mfe2/api/share/share-core';
+import { EXPRESS_STORE } from '@keycloak-nest-mfe-nx/api/share/share-core';
 import { Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import Keycloak = require('keycloak-connect');
+import * as Keycloak from 'keycloak-connect';
 import { KEYCLOAK_INSTANCE, KEYCLOAK_INSTANCE_NAME } from './constants';
 
 export const KeycloakProvider = {
@@ -11,20 +11,25 @@ export const KeycloakProvider = {
     try {
       logger.log('初始化Keycloak客户端');
       let keycloakConfig = config.get('keycloak');
-      let keycloakConConfig = {
+      let keycloakConConfig: Keycloak.KeycloakConfig = {
         'confidential-port': 0,
         'auth-server-url': keycloakConfig.url,
         resource: keycloakConfig.api.client,
         'ssl-required': 'external',
         realm: keycloakConfig.realmName,
+        "bearer-only":true,
       };
 
       keycloakConfig.api.bearerOnly &&
         (keycloakConConfig['bearer-only'] = keycloakConfig.api.bearerOnly);
+      keycloakConfig.api.secret &&
+        (keycloakConConfig['credentials'] = {
+          secret: keycloakConfig.api.secret,
+        });
       if (!!store) {
         const keycloak = await new Keycloak(
           { store: store },
-          keycloakConConfig,
+          keycloakConConfig
         );
         keycloak.authenticated = (request: Express.Request) => {
           logger.log(request['kauth'].grant);

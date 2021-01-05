@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: 'welcome',
     loadChildren: () =>
-      import('@keycloak-nest-mfe2/system-platform/feature-welcome').then(
+      import('@keycloak-nest-mfe-nx/system-platform/feature-welcome').then(
         (m) => m.SystemPlatformFeatureWelcomeModule
       ),
   },

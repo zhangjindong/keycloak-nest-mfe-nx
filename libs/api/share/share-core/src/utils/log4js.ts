@@ -1,10 +1,10 @@
-import  Path from 'path';
-import  Log4js from 'log4js';
-import  Util from 'util';
-import  Moment from 'moment'; // 处理时间的工具
-import  StackTrace from 'stacktrace-js';
-import  Chalk from 'chalk';
-import config from './log4js.config';
+import * as Path from 'path';
+import * as Log4js from 'log4js';
+import * as Util from 'util';
+import * as Moment from 'moment'; // 处理时间的工具
+import * as StackTrace from 'stacktrace-js';
+import * as Chalk from 'chalk';
+import  config from './log4js.config';
 
 // 日志级别
 export enum LoggerLevel {
@@ -25,7 +25,7 @@ export class ContextTrace {
     public readonly context: string,
     public readonly path?: string,
     public readonly lineNumber?: number,
-    public readonly columnNumber?: number,
+    public readonly columnNumber?: number
   ) {}
 }
 
@@ -58,7 +58,7 @@ Log4js.addLayout('Awesome-nest', (logConfig: any) => {
     const positionOutput: string = position ? ` [${position}]` : '';
     const typeOutput = `[${logConfig.type}] ${logEvent.pid.toString()}   - `;
     const dateOutput = `${Moment(logEvent.startTime).format(
-      'YYYY-MM-DD HH:mm:ss',
+      'YYYY-MM-DD HH:mm:ss'
     )}`;
     const moduleOutput: string = moduleName
       ? `[${moduleName}] `
@@ -88,7 +88,7 @@ Log4js.addLayout('Awesome-nest', (logConfig: any) => {
     }
 
     return `${Chalk.green(typeOutput)}${dateOutput}  ${Chalk.yellow(
-      moduleOutput,
+      moduleOutput
     )}${levelOutput}${positionOutput}`;
   };
 });

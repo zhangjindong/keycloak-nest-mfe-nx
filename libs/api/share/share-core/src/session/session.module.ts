@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from 'apps/coreenterprisefront/src/config/config.module';
 import { SessionProvider } from './session.provider';
 import { StoreProvider } from './store.provider';
 

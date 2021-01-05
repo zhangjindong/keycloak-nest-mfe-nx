@@ -16,16 +16,16 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@keycloak-nest-mfe2/api-interfaces": [
+      "@keycloak-nest-mfe-nx/api-interfaces": [
         "libs/api-interfaces/src/index.ts"
       ],
-      "@keycloak-nest-mfe2/system-platform/feature-welcome": [
+      "@keycloak-nest-mfe-nx/system-platform/feature-welcome": [
         "libs/system-platform/feature-welcome/src/index.ts"
       ],
-      "@keycloak-nest-mfe2/api/share/share-core": [
+      "@keycloak-nest-mfe-nx/api/share/share-core": [
         "libs/api/share/share-core/src/index.ts"
       ],
-      "@keycloak-nest-mfe2/api/share/keycloak-app": [
+      "@keycloak-nest-mfe-nx/api/share/keycloak-app": [
         "libs/api/share/keycloak-app/src/index.ts"
       ]
     }

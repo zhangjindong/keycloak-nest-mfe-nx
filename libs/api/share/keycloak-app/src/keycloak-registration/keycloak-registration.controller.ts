@@ -1,4 +1,4 @@
-import { Controller, Get, Logger, Query } from '@nestjs/common';
+import { Controller, Get, Logger, Query, SetMetadata } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { ApiTags } from '@nestjs/swagger';
 import { combineLatest, Observable, of } from 'rxjs';
@@ -9,22 +9,29 @@ import { KeycloakRegistrationService } from './keycloak-registration.service';
 export class KeycloakRegistrationController {
   constructor(
     private config: ConfigService,
-    private keycloakRegistration: KeycloakRegistrationService,
+    private keycloakRegistration: KeycloakRegistrationService
   ) {}
   @Get()
+  @SetMetadata('unprotected', true)
   clientRegistration(
-    @Query('accessToken') accessToken: string,
+    @Query('accessToken') accessToken: string
   ): Observable<any> {
     const keycloakConfig = this.config.get('keycloak');
+    Logger.log(
+      'keycloak 注册 endpoint',
+      `${this.config.get('keycloak.url')}/realms/${this.config.get(
+        'keycloak.realmName'
+      )}/clients-registrations`
+    );
     return combineLatest(
       this.keycloakRegistration
         .createClient(
           {
             accessToken,
             endpoint: `${this.config.get(
-              'keycloak.url',
+              'keycloak.url'
             )}/realms/${this.config.get(
-              'keycloak.realmName',
+              'keycloak.realmName'
             )}/clients-registrations`,
           },
           {
@@ -39,24 +46,24 @@ export class KeycloakRegistrationController {
             // rootUrl: keycloakConfig.adminUrl,
             // redirectUris: [`${keycloakConfig.adminUrl}/*`],
             // webOrigins: [keycloakConfig.adminUrl, '*'],
-          },
+          }
         )
         .pipe(
-          tap(res => {
+          tap((res) => {
             Logger.error(res);
           }),
-          catchError(err => {
+          catchError((err) => {
             Logger.log(err);
             return of({ code: 500, err });
-          }),
+          })
         ),
       this.keycloakRegistration.createClient(
         {
           accessToken,
           endpoint: `${this.config.get(
-            'keycloak.url',
+            'keycloak.url'
           )}/realms/${this.config.get(
-            'keycloak.realmName',
+            'keycloak.realmName'
           )}/clients-registrations`,
         },
         {
@@ -71,8 +78,8 @@ export class KeycloakRegistrationController {
           redirectUris: [`${keycloakConfig.adminUrl}/*`],
           webOrigins: [keycloakConfig.adminUrl, '*'],
           directAccessGrantsEnabled: true,
-        },
-      ),
+        }
+      )
     );
   }
 }

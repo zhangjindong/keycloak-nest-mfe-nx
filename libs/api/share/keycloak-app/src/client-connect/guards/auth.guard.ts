@@ -3,6 +3,7 @@ import {
   ExecutionContext,
   Inject,
   Injectable,
+  Logger,
   UnauthorizedException,
 } from '@nestjs/common';
 import * as KeycloakConnect from 'keycloak-connect';
@@ -20,7 +21,9 @@ export class AuthGuard implements CanActivate {
     @Inject(KEYCLOAK_INSTANCE)
     private keycloak: KeycloakConnect.Keycloak,
     private readonly reflector: Reflector,
-  ) {}
+  ) {
+    Logger.log('')
+  }
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const isUnprotected = this.reflector.get<boolean>(

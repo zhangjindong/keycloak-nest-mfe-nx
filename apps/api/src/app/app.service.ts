@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Message } from '@keycloak-nest-mfe2/api-interfaces';
+import { Message } from '@keycloak-nest-mfe-nx/api-interfaces';
 
 @Injectable()
 export class AppService {
