@@ -4,8 +4,8 @@ export default () => ({
   apiPath: 'apidoc',
   // keycloak
   keycloak: {
-    url: process.env.SERVICE_KEYCLOAK_ADDRESS || 'http://sso.qloud.io/auth',// 'http://localhost:8081/auth',
-    realmName: process.env.KEYCLOAK_REALM_NAME || 'cofco_test',
+    url: process.env.SERVICE_KEYCLOAK_ADDRESS || 'http://localhost:8081/auth',
+    realmName: process.env.KEYCLOAK_REALM_NAME || 'cofco',
     adminUrl: process.env.KEYCLOAK_ROOTURL || 'http://portal.baoli.com:4200',
     api: {
       client: process.env.KEYCLOAK_CLIENT || 'test_portal_node',
