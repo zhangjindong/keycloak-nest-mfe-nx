@@ -1,5 +1,5 @@
 {
-  "npmScope": "keycloak-nest-mfe2",
+  "npmScope": "keycloak-nest-mfe-nx",
   "affected": {
     "defaultBase": "master"
   },
@@ -50,6 +50,9 @@
       "tags": []
     },
     "api-share-keycloak-app": {
+      "tags": []
+    },
+    "web-share-initialize-service": {
       "tags": []
     }
   }

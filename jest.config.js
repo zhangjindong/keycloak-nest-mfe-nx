@@ -8,5 +8,6 @@ module.exports = {
     '<rootDir>/libs/system-platform/feature-welcome',
     '<rootDir>/libs/api/share/share-core',
     '<rootDir>/libs/api/share/keycloak-app',
+    '<rootDir>/libs/web/share/initialize-service',
   ],
 };

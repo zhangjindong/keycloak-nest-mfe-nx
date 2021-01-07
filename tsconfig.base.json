@@ -27,6 +27,9 @@
       ],
       "@keycloak-nest-mfe-nx/api/share/keycloak-app": [
         "libs/api/share/keycloak-app/src/index.ts"
+      ],
+      "@keycloak-nest-mfe-nx/web/share/initialize-service": [
+        "libs/web/share/initialize-service/src/index.ts"
       ]
     }
   },

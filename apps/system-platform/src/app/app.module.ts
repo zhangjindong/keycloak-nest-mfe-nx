@@ -13,13 +13,37 @@ import { AppRoutingModule } from './app-routing.module';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+
+import {
+  KeycloakInitializerProvide,
+  WebShareInitializeServiceModule,
+} from '@keycloak-nest-mfe-nx/web/share/initialize-service';
+import { KeycloakAngularModule } from 'keycloak-angular';
 
 registerLocaleData(zh);
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, AppRoutingModule, IconsProviderModule, NzLayoutModule, NzMenuModule],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    IconsProviderModule,
+    NzLayoutModule,
+    NzMenuModule,
+    NzDropDownModule,
+    NzBadgeModule,
+    KeycloakAngularModule,
+    WebShareInitializeServiceModule,
+  ],
+  providers: [
+    KeycloakInitializerProvide,
+    { provide: NZ_I18N, useValue: zh_CN },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

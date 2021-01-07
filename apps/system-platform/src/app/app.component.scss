@@ -23,7 +23,11 @@
   cursor: pointer;
   transition: all .3s,padding 0s;
 }
-
+.dorSty{
+  display: inline-block;
+  float: right;
+  padding-right: 1.5vh;
+}
 .trigger:hover {
   color: #1890ff;
 }
@@ -34,7 +38,8 @@
   padding-left: 24px;
   overflow: hidden;
   line-height: 64px;
-  background: #001529;
+  // background: #001529;
+  background: #fff;
   transition: all .3s;
 }
 

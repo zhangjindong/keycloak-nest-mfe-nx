@@ -81,7 +81,7 @@
       },
       "root": "apps/system-platform",
       "sourceRoot": "apps/system-platform/src",
-      "prefix": "keycloak-nest-mfe2",
+      "prefix": "keycloak-nest-mfe-nx",
       "architect": {
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
@@ -199,7 +199,7 @@
       },
       "root": "apps/r-factoring",
       "sourceRoot": "apps/r-factoring/src",
-      "prefix": "keycloak-nest-mfe2",
+      "prefix": "keycloak-nest-mfe-nx",
       "architect": {
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
@@ -312,7 +312,7 @@
       "projectType": "library",
       "root": "libs/system-platform/feature-welcome",
       "sourceRoot": "libs/system-platform/feature-welcome/src",
-      "prefix": "keycloak-nest-mfe2",
+      "prefix": "keycloak-nest-mfe-nx",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
@@ -375,6 +375,34 @@
             "jestConfig": "libs/api/share/keycloak-app/jest.config.js",
             "passWithNoTests": true
           }
+        }
+      }
+    },
+    "web-share-initialize-service": {
+      "projectType": "library",
+      "root": "libs/web/share/initialize-service",
+      "sourceRoot": "libs/web/share/initialize-service/src",
+      "prefix": "keycloak-nest-mfe-nx",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/share/initialize-service/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/web/share/initialize-service/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
         }
       }
     }

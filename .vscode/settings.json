@@ -1,3 +1,4 @@
 {
-    "scss.validate": false
+    "scss.validate": false,
+    "vsicons.presets.angular": true
 }
