@@ -54,6 +54,15 @@
     },
     "web-share-initialize-service": {
       "tags": []
+    },
+    "system-platform-contract-domain": {
+      "tags": []
+    },
+    "system-platform-contract-feature-list": {
+      "tags": []
+    },
+    "system-platform-contract-feature-detail": {
+      "tags": []
     }
   }
 }

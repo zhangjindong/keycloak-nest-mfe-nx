@@ -3,14 +3,58 @@
   "id": "project-add",
   "type": "object",
   "properties": {
+    "path": {
+      "type": "string",
+      "description": "目录",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": {
+        "message": "目录?",
+        "type": "string"
+      }
+    },
+    "type": {
+      "type": "string",
+      "description": "类型:(API or Angular)",
+      "default": "API",
+      "x-prompt": {
+        "message": "请选择工程类型?",
+        "type": "list",
+        "items": [
+          {
+            "value": "angular",
+            "label": "Angular项目"
+          },
+          {
+            "value": "api",
+            "label": "Nest接口API"
+          }
+        ]
+      }
+    },
     "name": {
       "type": "string",
-      "description": "Library name",
+      "description": "领域名称",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": {
+        "message": "领域名称?",
+        "type": "string"
+      }
+    },
+    "feature": {
+      "type": "string",
+      "description": "领域功能名称domain or user(feature-user)",
+      "default":"domain",
       "$default": {
         "$source": "argv",
         "index": 0
       }
     }
   },
-  "required": ["name"]
+  "required": ["type", "name", "feature"]
 }

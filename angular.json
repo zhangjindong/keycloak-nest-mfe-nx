@@ -405,6 +405,90 @@
           "style": "scss"
         }
       }
+    },
+    "system-platform-contract-domain": {
+      "projectType": "library",
+      "root": "libs/system-platform/contract/domain",
+      "sourceRoot": "libs/system-platform/contract/domain/src",
+      "prefix": "keycloak-nest-mfe-nx",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/system-platform/contract/domain/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/system-platform/contract/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "system-platform-contract-feature-list": {
+      "projectType": "library",
+      "root": "libs/system-platform/contract/feature-list",
+      "sourceRoot": "libs/system-platform/contract/feature-list/src",
+      "prefix": "keycloak-nest-mfe-nx",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/system-platform/contract/feature-list/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/system-platform/contract/feature-list/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "system-platform-contract-feature-detail": {
+      "projectType": "library",
+      "root": "libs/system-platform/contract/feature-detail",
+      "sourceRoot": "libs/system-platform/contract/feature-detail/src",
+      "prefix": "keycloak-nest-mfe-nx",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/system-platform/contract/feature-detail/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/system-platform/contract/feature-detail/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

@@ -21,6 +21,9 @@ import {
   WebShareInitializeServiceModule,
 } from '@keycloak-nest-mfe-nx/web/share/initialize-service';
 import { KeycloakAngularModule } from 'keycloak-angular';
+import { NG_ENTITY_SERVICE_CONFIG } from '@datorama/akita-ng-entity-service';
+import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
+import { environment } from '../environments/environment';
 
 registerLocaleData(zh);
 
@@ -39,10 +42,12 @@ registerLocaleData(zh);
     NzBadgeModule,
     KeycloakAngularModule,
     WebShareInitializeServiceModule,
+    environment.production ? [] : AkitaNgDevtools.forRoot(),
   ],
   providers: [
     KeycloakInitializerProvide,
     { provide: NZ_I18N, useValue: zh_CN },
+    { provide: NG_ENTITY_SERVICE_CONFIG, useValue: { baseUrl: '/api' }},
   ],
   bootstrap: [AppComponent],
 })

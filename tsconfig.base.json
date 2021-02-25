@@ -30,6 +30,15 @@
       ],
       "@keycloak-nest-mfe-nx/web/share/initialize-service": [
         "libs/web/share/initialize-service/src/index.ts"
+      ],
+      "@keycloak-nest-mfe-nx/system-platform/contract/domain": [
+        "libs/system-platform/contract/domain/src/index.ts"
+      ],
+      "@keycloak-nest-mfe-nx/system-platform/contract/feature-list": [
+        "libs/system-platform/contract/feature-list/src/index.ts"
+      ],
+      "@keycloak-nest-mfe-nx/system-platform/contract/feature-detail": [
+        "libs/system-platform/contract/feature-detail/src/index.ts"
       ]
     }
   },
