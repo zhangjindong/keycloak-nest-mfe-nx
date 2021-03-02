@@ -22,7 +22,7 @@ export class TransformInterceptor implements NestInterceptor {
     return next.handle().pipe(
       map(data => {
         if (!!data) {
-          const logFormat = ` <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< TransformInterceptor
+          const logFormat = ` <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< TransformInterceptor 正常响应日志
     Request original url: ${req.originalUrl}
     Method: ${req.method}
     IP: ${req.ip}

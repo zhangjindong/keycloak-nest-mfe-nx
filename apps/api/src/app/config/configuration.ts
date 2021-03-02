@@ -1,7 +1,8 @@
 export default () => ({
   // 端口
   port: parseInt(process.env.PORT, 10) || 8080,
-  apiPath: 'apidoc',
+  apiPath: 'api',
+  apiDocPath:'apidoc',
   // keycloak
   keycloak: {
     url: process.env.SERVICE_KEYCLOAK_ADDRESS || 'http://localhost:8081/auth',

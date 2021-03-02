@@ -1,0 +1,12 @@
+<div class="box-block">
+  <nz-breadcrumb>
+    <nz-breadcrumb-item>
+      <i nz-icon [nzType]="'home'"></i> MFE
+    </nz-breadcrumb-item>
+    <ng-container
+      *ngFor="let item of breadcrumb$ | async as list; first as isFirst"
+    >
+      <nz-breadcrumb-item> {{ item.label }} </nz-breadcrumb-item>
+    </ng-container>
+  </nz-breadcrumb>
+</div>

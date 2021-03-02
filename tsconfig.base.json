@@ -16,29 +16,38 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@keycloak-nest-mfe-nx/api-interfaces": [
-        "libs/api-interfaces/src/index.ts"
-      ],
-      "@keycloak-nest-mfe-nx/system-platform/feature-welcome": [
+      "@mfe/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@mfe/system-platform/feature-welcome": [
         "libs/system-platform/feature-welcome/src/index.ts"
       ],
-      "@keycloak-nest-mfe-nx/api/share/share-core": [
-        "libs/api/share/share-core/src/index.ts"
-      ],
-      "@keycloak-nest-mfe-nx/api/share/keycloak-app": [
+      "@mfe/api/share/share-core": ["libs/api/share/share-core/src/index.ts"],
+      "@mfe/api/share/keycloak-app": [
         "libs/api/share/keycloak-app/src/index.ts"
       ],
-      "@keycloak-nest-mfe-nx/web/share/initialize-service": [
+      "@mfe/web/share/initialize-service": [
         "libs/web/share/initialize-service/src/index.ts"
       ],
-      "@keycloak-nest-mfe-nx/system-platform/contract/domain": [
+      "@mfe/system-platform/contract/domain": [
         "libs/system-platform/contract/domain/src/index.ts"
       ],
-      "@keycloak-nest-mfe-nx/system-platform/contract/feature-list": [
+      "@mfe/system-platform/contract/feature-list": [
         "libs/system-platform/contract/feature-list/src/index.ts"
       ],
-      "@keycloak-nest-mfe-nx/system-platform/contract/feature-detail": [
+      "@mfe/system-platform/contract/feature-detail": [
         "libs/system-platform/contract/feature-detail/src/index.ts"
+      ],
+      "@mfe/system-platform/dept/domain": [
+        "libs/system-platform/dept/domain/src/index.ts"
+      ],
+      "@mfe/web/share/menu/domain": ["libs/web/share/menu/domain/src/index.ts"],
+      "@mfe/web/share/menu/feature-menu-sider": [
+        "libs/web/share/menu/feature-menu-sider/src/index.ts"
+      ],
+      "@mfe/web/share/breadcrumb/domain": [
+        "libs/web/share/breadcrumb/domain/src/index.ts"
+      ],
+      "@mfe/web/share/breadcrumb/feature-breadcrumb": [
+        "libs/web/share/breadcrumb/feature-breadcrumb/src/index.ts"
       ]
     }
   },

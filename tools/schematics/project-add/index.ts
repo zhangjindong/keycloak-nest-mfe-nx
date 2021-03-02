@@ -19,7 +19,7 @@ export default function (schema: any): Rule {
       if(!!schema.feature && !!schema.name && !!schema.path) schematics.push(
         externalSchematic('@datorama/akita', 'feature', {
           name: schema.name,
-          dirName: 'domain/' + schema.name,
+          dirName: 'state'   ,
           project:
             schema.path.replace(/\//g, '-') + '-' + schema.name + '-domain',
           noInteractive: true,
@@ -38,7 +38,7 @@ export default function (schema: any): Rule {
     }
   }
   if (schema.type.toLocaleLowerCase() == 'api') {
-    if(!!schema.feature && !!schema.name && !!schema.path) schematics.push(
+    if(!!schema.name) schematics.push(
       externalSchematic('@nrwl/nest', 'application', {
         name: schema.name + '-node',
       })

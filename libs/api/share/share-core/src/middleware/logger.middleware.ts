@@ -5,7 +5,7 @@ export function logger(req: Request, res: Response, next: () => any) {
   const code = res.statusCode; // 响应状态码
   next();
   // 组装日志信息
-  const logFormat = ` >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>logger：
+  const logFormat = ` >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>logger请求日志：
     Request original url: ${req.originalUrl}
     Method: ${req.method}
     IP: ${req.ip}

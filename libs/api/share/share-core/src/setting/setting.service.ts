@@ -1,6 +1,7 @@
 import {
   INestApplication,
   Injectable,
+  Logger,
   OnApplicationBootstrap,
   ValidationPipe,
 } from '@nestjs/common';
@@ -19,11 +20,6 @@ export class SettingService implements OnApplicationBootstrap {
   init(app: INestApplication): number {
     this.app = app;
     this.config = this.moduleRef.get(ConfigService, { strict: false });
-
-    return Number(this.config.get('port') || 3000);
-  }
-
-  async onApplicationBootstrap() {
     this.app.setGlobalPrefix(this.config.get('apiPath'));
 
     // 监听所有的请求路由，并打印日志
@@ -40,6 +36,11 @@ export class SettingService implements OnApplicationBootstrap {
 
     // 过滤处理 HTTP 异常
     this.app.useGlobalFilters(new HttpExceptionFilter());
+    return Number(this.config.get('port') || 3000);
+  }
+
+  async onApplicationBootstrap() {
+   
 
     // await this.app.listen(this.config.get('port'));
   }

@@ -51,27 +51,6 @@
         }
       }
     },
-    "api-interfaces": {
-      "root": "libs/api-interfaces",
-      "sourceRoot": "libs/api-interfaces/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/api-interfaces/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "system-platform": {
       "projectType": "application",
       "schematics": {
@@ -81,7 +60,7 @@
       },
       "root": "apps/system-platform",
       "sourceRoot": "apps/system-platform/src",
-      "prefix": "keycloak-nest-mfe-nx",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
@@ -135,7 +114,8 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "system-platform:build"
+            "browserTarget": "system-platform:build",
+            "proxyConfig": "proxy.js"
           },
           "configurations": {
             "production": {
@@ -199,7 +179,7 @@
       },
       "root": "apps/r-factoring",
       "sourceRoot": "apps/r-factoring/src",
-      "prefix": "keycloak-nest-mfe-nx",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
@@ -253,7 +233,8 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "r-factoring:build"
+            "browserTarget": "r-factoring:build",
+            "proxyConfig": "proxy.js"
           },
           "configurations": {
             "production": {
@@ -312,7 +293,7 @@
       "projectType": "library",
       "root": "libs/system-platform/feature-welcome",
       "sourceRoot": "libs/system-platform/feature-welcome/src",
-      "prefix": "keycloak-nest-mfe-nx",
+      "prefix": "app",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
@@ -382,7 +363,7 @@
       "projectType": "library",
       "root": "libs/web/share/initialize-service",
       "sourceRoot": "libs/web/share/initialize-service/src",
-      "prefix": "keycloak-nest-mfe-nx",
+      "prefix": "app",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
@@ -410,7 +391,7 @@
       "projectType": "library",
       "root": "libs/system-platform/contract/domain",
       "sourceRoot": "libs/system-platform/contract/domain/src",
-      "prefix": "keycloak-nest-mfe-nx",
+      "prefix": "app",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
@@ -438,7 +419,7 @@
       "projectType": "library",
       "root": "libs/system-platform/contract/feature-list",
       "sourceRoot": "libs/system-platform/contract/feature-list/src",
-      "prefix": "keycloak-nest-mfe-nx",
+      "prefix": "app",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
@@ -466,7 +447,7 @@
       "projectType": "library",
       "root": "libs/system-platform/contract/feature-detail",
       "sourceRoot": "libs/system-platform/contract/feature-detail/src",
-      "prefix": "keycloak-nest-mfe-nx",
+      "prefix": "app",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
@@ -480,6 +461,138 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/system-platform/contract/feature-detail/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "web-share-menu-domain": {
+      "projectType": "library",
+      "root": "libs/web/share/menu/domain",
+      "sourceRoot": "libs/web/share/menu/domain/src",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/web/share/menu/domain/tsconfig.lib.json",
+              "libs/web/share/menu/domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/web/share/menu/domain/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/web/share/menu/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "web-share-menu-feature-menu-sider": {
+      "projectType": "library",
+      "root": "libs/web/share/menu/feature-menu-sider",
+      "sourceRoot": "libs/web/share/menu/feature-menu-sider/src",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/web/share/menu/feature-menu-sider/tsconfig.lib.json",
+              "libs/web/share/menu/feature-menu-sider/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/web/share/menu/feature-menu-sider/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/web/share/menu/feature-menu-sider/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "web-share-breadcrumb-domain": {
+      "projectType": "library",
+      "root": "libs/web/share/breadcrumb/domain",
+      "sourceRoot": "libs/web/share/breadcrumb/domain/src",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/web/share/breadcrumb/domain/tsconfig.lib.json",
+              "libs/web/share/breadcrumb/domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/web/share/breadcrumb/domain/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/web/share/breadcrumb/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "web-share-breadcrumb-feature-breadcrumb": {
+      "projectType": "library",
+      "root": "libs/web/share/breadcrumb/feature-breadcrumb",
+      "sourceRoot": "libs/web/share/breadcrumb/feature-breadcrumb/src",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/web/share/breadcrumb/feature-breadcrumb/tsconfig.lib.json",
+              "libs/web/share/breadcrumb/feature-breadcrumb/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/web/share/breadcrumb/feature-breadcrumb/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/web/share/breadcrumb/feature-breadcrumb/jest.config.js",
             "passWithNoTests": true
           }
         }

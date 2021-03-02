@@ -10,7 +10,7 @@ import zh from '@angular/common/locales/zh';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { IconsProviderModule } from './icons-provider.module';
+import { IconsProviderModule } from '@mfe/web/share/initialize-service';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 

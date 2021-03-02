@@ -14,7 +14,7 @@ export class ApiDocumentService {
     title;
     description;
     version;
-    apiPath: 'apidoc';
+    apiDocPath: 'apidoc';
     tag?: string;
   }) {
     const internalOptions = new DocumentBuilder()
@@ -24,6 +24,6 @@ export class ApiDocumentService {
       .addTag(config.tag)
       .build();
     const document = SwaggerModule.createDocument(this.app, internalOptions);
-    SwaggerModule.setup(config.apiPath, this.app, document);
+    SwaggerModule.setup(config.apiDocPath, this.app, document);
   }
 }

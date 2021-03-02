@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { Message } from '@keycloak-nest-mfe-nx/api-interfaces';
 
 @Injectable()
 export class AppService {
-  getData(): Message {
+  getData(): any {
     return { message: 'Welcome to api!' };
   }
 }

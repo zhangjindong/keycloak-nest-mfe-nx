@@ -2,7 +2,7 @@ import {
   AuthGuard,
   ClientConnectModule,
   KeycloakRegistrationModule,
-} from '@keycloak-nest-mfe-nx/api/share/keycloak-app';
+} from '@mfe/api/share/keycloak-app';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';

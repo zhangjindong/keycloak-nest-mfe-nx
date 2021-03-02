@@ -1,6 +1,10 @@
+@import 'ng-zorro-antd/ng-zorro-antd.min.css';
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 /* You can add global styles to this file, and also import other style files */
-@import 'ng-zorro-antd/ng-zorro-antd.min.css';
-@import 'tailwindcss/tailwind.css';
+// @import 'tailwindcss/tailwind.css';
+
+.anticon {
+  vertical-align: 0;
+}

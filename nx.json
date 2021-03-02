@@ -1,5 +1,5 @@
 {
-  "npmScope": "keycloak-nest-mfe-nx",
+  "npmScope": "mfe",
   "affected": {
     "defaultBase": "master"
   },
@@ -24,9 +24,6 @@
   },
   "projects": {
     "api": {
-      "tags": []
-    },
-    "api-interfaces": {
       "tags": []
     },
     "system-platform": {
@@ -62,6 +59,18 @@
       "tags": []
     },
     "system-platform-contract-feature-detail": {
+      "tags": []
+    },
+    "web-share-menu-domain": {
+      "tags": []
+    },
+    "web-share-menu-feature-menu-sider": {
+      "tags": []
+    },
+    "web-share-breadcrumb-domain": {
+      "tags": []
+    },
+    "web-share-breadcrumb-feature-breadcrumb": {
       "tags": []
     }
   }

@@ -26,7 +26,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
         : HttpStatus.INTERNAL_SERVER_ERROR;
     const config =
       exception instanceof HttpException ? exception.getResponse() : '';
-    const logFormat = ` <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<AllExceptionsFilter:
+    const logFormat = ` <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<AllExceptionsFilter 异常日志:
     Request original url: ${request.originalUrl}
     Method: ${request.method}
     IP: ${request.ip}

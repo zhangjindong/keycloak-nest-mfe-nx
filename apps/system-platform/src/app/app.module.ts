@@ -10,21 +10,21 @@ import zh from '@angular/common/locales/zh';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { IconsProviderModule } from './icons-provider.module';
+import { IconsProviderModule } from '@mfe/web/share/initialize-service';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-
 import {
   KeycloakInitializerProvide,
   WebShareInitializeServiceModule,
-} from '@keycloak-nest-mfe-nx/web/share/initialize-service';
+} from '@mfe/web/share/initialize-service';
 import { KeycloakAngularModule } from 'keycloak-angular';
 import { NG_ENTITY_SERVICE_CONFIG } from '@datorama/akita-ng-entity-service';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { environment } from '../environments/environment';
-
+import { WebShareMenuFeatureMenuSiderModule } from '@mfe/web/share/menu/feature-menu-sider';
+import { WebShareBreadcrumbFeatureBreadcrumbModule } from '@mfe/web/share/breadcrumb/feature-breadcrumb';
 registerLocaleData(zh);
 
 @NgModule({
@@ -43,11 +43,13 @@ registerLocaleData(zh);
     KeycloakAngularModule,
     WebShareInitializeServiceModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
+    WebShareMenuFeatureMenuSiderModule,
+    WebShareBreadcrumbFeatureBreadcrumbModule,
   ],
   providers: [
     KeycloakInitializerProvide,
     { provide: NZ_I18N, useValue: zh_CN },
-    { provide: NG_ENTITY_SERVICE_CONFIG, useValue: { baseUrl: '/api' }},
+    { provide: NG_ENTITY_SERVICE_CONFIG, useValue: { baseUrl: '/api' } },
   ],
   bootstrap: [AppComponent],
 })

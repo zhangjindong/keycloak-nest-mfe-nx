@@ -56,5 +56,5 @@
       }
     }
   },
-  "required": ["type", "name", "feature"]
+  "required": []
 }

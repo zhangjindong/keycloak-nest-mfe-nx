@@ -1,0 +1,38 @@
+<!-- <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+    nzTheme="light"
+  > -->
+<div class="sidebar-logo">
+  <a href="/" target="_blank">
+    <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo" />
+    <h1>MFE微前端</h1>
+  </a>
+</div>
+<ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+  <ng-container *ngFor="let item of menus$ | async as list; first as isFirst">
+    <li
+      nz-submenu
+      [nzOpen]="isFirst"
+      [nzTitle]="item.name"
+      [nzIcon]="item.icon || 'form'"
+    >
+      <ul>
+        <ng-container *ngFor="let subitem of item.subMenus">
+          <li nz-menu-item [nzDisabled]="!subitem.forwardUrl" nzMatchRouter>
+            <a [disabled]="!subitem.forwardUrl"
+              [routerLink]="subitem.forwardUrl"
+              [queryParams]="{ breadcrumb: subitem.name }"
+              >{{ subitem.name }}</a
+            >
+          </li></ng-container
+        >
+      </ul>
+    </li></ng-container
+  >
+</ul>
+<!-- </nz-sider> -->

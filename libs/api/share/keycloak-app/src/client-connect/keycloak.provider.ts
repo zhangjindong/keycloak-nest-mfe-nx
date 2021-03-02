@@ -1,4 +1,4 @@
-import { EXPRESS_STORE } from '@keycloak-nest-mfe-nx/api/share/share-core';
+import { EXPRESS_STORE } from '@mfe/api/share/share-core';
 import { Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as Keycloak from 'keycloak-connect';
