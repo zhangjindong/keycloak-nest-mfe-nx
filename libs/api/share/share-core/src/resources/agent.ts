@@ -1,7 +1,7 @@
 import urlJoin from 'url-join';
 import template from 'url-template';
-import  {AxiosRequestConfig, Method} from 'axios';
-import {pick, omit, isUndefined, last} from 'lodash';
+import { AxiosRequestConfig, Method } from 'axios';
+import { pick, omit, isUndefined, last } from 'lodash';
 import { HttpService } from '@nestjs/common';
 
 // constants
@@ -25,7 +25,7 @@ export interface RequestArgs {
   // if this value is set, we return the field with format: {[field]: resourceId}
   // to represent the newly created resource
   // detail: keycloak/keycloak-nodejs-admin-client issue #11
-  returnResourceIdInLocationHeader?: {field: string};
+  returnResourceIdInLocationHeader?: { field: string };
 }
 
 export class Agent {
@@ -34,19 +34,22 @@ export class Agent {
   private getBaseUrl?: () => string;
   private requestConfig?: AxiosRequestConfig;
 
-  constructor({
-    path = '/',
-    getUrlParams = () => ({}),
-    getBaseUrl = () => (''),
-  }: {
-    path?: string;
-    getUrlParams?: () => Record<string, any>;
-    getBaseUrl?: () => string;
-  },httpService:HttpService) {
+  constructor(
+    {
+      path = '/',
+      getUrlParams = () => ({}),
+      getBaseUrl = () => '',
+    }: {
+      path?: string;
+      getUrlParams?: () => Record<string, any>;
+      getBaseUrl?: () => string;
+    },
+    httpService: HttpService
+  ) {
     this.getBaseParams = getUrlParams;
     this.getBaseUrl = getBaseUrl;
     this.basePath = path;
-    this.requestConfig =  {};
+    this.requestConfig = {};
   }
 
   public request({
@@ -67,7 +70,7 @@ export class Agent {
 
       // Add filtered payload parameters to base parameters
       const allUrlParamKeys = [...Object.keys(baseParams), ...urlParamKeys];
-      const urlParams = {...baseParams, ...pick(payload, allUrlParamKeys)};
+      const urlParams = { ...baseParams, ...pick(payload, allUrlParamKeys) };
 
       // Omit url parameters and query parameters from payload
       payload = omit(payload, [...allUrlParamKeys, ...queryParamKeys]);
@@ -149,7 +152,7 @@ export class Agent {
     queryParams?: Record<string, any> | null;
     catchNotFound: boolean;
     payloadKey?: string;
-    returnResourceIdInLocationHeader?: {field: string};
+    returnResourceIdInLocationHeader?: { field: string };
   }) {
     const newPath = urlJoin(this.basePath, path);
 
@@ -194,20 +197,20 @@ export class Agent {
         const locationHeader = res.headers.location;
         if (!locationHeader) {
           throw new Error(
-            `location header is not found in request: ${res.config.url}`,
+            `location header is not found in request: ${res.config.url}`
           );
         }
         const resourceId: string = last(locationHeader.split(SLASH));
         if (!resourceId) {
           // throw an error to let users know the response is not expected
           throw new Error(
-            `resourceId is not found in Location header from request: ${res.config.url}`,
+            `resourceId is not found in Location header from request: ${res.config.url}`
           );
         }
 
         // return with format {[field]: string}
-        const {field} = returnResourceIdInLocationHeader;
-        return {[field]: resourceId};
+        const { field } = returnResourceIdInLocationHeader;
+        return { [field]: resourceId };
       }
       return res.data;
     } catch (err) {

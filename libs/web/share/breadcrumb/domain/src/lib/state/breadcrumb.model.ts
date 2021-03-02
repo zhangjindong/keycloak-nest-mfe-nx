@@ -1,10 +1,8 @@
 export interface Breadcrumb {
   label: string;
-  url:string
+  url: string;
 }
 
 export function createBreadcrumb(params: Partial<Breadcrumb>) {
-  return {
-
-  } as Breadcrumb;
+  return {} as Breadcrumb;
 }

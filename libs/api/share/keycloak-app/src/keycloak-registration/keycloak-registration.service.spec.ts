@@ -9,7 +9,9 @@ describe('KeycloakRegistrationService', () => {
       providers: [KeycloakRegistrationService],
     }).compile();
 
-    service = module.get<KeycloakRegistrationService>(KeycloakRegistrationService);
+    service = module.get<KeycloakRegistrationService>(
+      KeycloakRegistrationService
+    );
   });
 
   it('should be defined', () => {

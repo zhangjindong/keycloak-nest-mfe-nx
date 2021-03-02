@@ -15,10 +15,7 @@ import { MenuQuery, MenuService } from '@mfe/web/share/menu/domain';
 })
 export class MenuSiderComponent implements OnInit {
   @Input() isCollapsed = false;
-  constructor(
-    private menuService: MenuService,
-    private menuQuery: MenuQuery
-  ) {}
+  constructor(private menuService: MenuService, private menuQuery: MenuQuery) {}
   menus$ = this.menuQuery.selectAll();
   ngOnInit(): void {
     this.menuService.get().subscribe();

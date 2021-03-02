@@ -7,6 +7,6 @@ export const webShareMenuDomainRoutes: Route[] = [];
 
 @NgModule({
   imports: [CommonModule, RouterModule],
-  providers:[MenuService]
+  providers: [MenuService],
 })
 export class WebShareMenuDomainModule {}

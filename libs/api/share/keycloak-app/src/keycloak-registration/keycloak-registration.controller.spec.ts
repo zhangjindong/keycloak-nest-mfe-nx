@@ -9,7 +9,9 @@ describe('KeycloakRegistration Controller', () => {
       controllers: [KeycloakRegistrationController],
     }).compile();
 
-    controller = module.get<KeycloakRegistrationController>(KeycloakRegistrationController);
+    controller = module.get<KeycloakRegistrationController>(
+      KeycloakRegistrationController
+    );
   });
 
   it('should be defined', () => {

@@ -7,9 +7,7 @@ export interface MenuState extends EntityState<Menu> {}
 @Injectable({ providedIn: 'root' })
 @StoreConfig({ name: 'menu' })
 export class MenuStore extends EntityStore<MenuState> {
-
   constructor() {
     super();
   }
-
 }

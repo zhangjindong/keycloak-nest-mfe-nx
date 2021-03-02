@@ -17,7 +17,7 @@ export const KeycloakProvider = {
         resource: keycloakConfig.api.client,
         'ssl-required': 'external',
         realm: keycloakConfig.realmName,
-        "bearer-only":true,
+        'bearer-only': true,
       };
 
       keycloakConfig.api.bearerOnly &&

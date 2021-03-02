@@ -24,7 +24,8 @@
       <ul>
         <ng-container *ngFor="let subitem of item.subMenus">
           <li nz-menu-item [nzDisabled]="!subitem.forwardUrl" nzMatchRouter>
-            <a [disabled]="!subitem.forwardUrl"
+            <a
+              [disabled]="!subitem.forwardUrl"
               [routerLink]="subitem.forwardUrl"
               [queryParams]="{ breadcrumb: subitem.name }"
               >{{ subitem.name }}</a

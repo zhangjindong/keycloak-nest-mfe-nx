@@ -4,6 +4,6 @@ import { ContractService } from './contract.service';
 
 @NgModule({
   imports: [CommonModule],
-  providers:[ContractService]
+  providers: [ContractService],
 })
 export class SystemPlatformContractDomainModule {}

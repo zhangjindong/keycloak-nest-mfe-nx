@@ -17,7 +17,7 @@ import configuration from './config/configuration';
       isGlobal: true,
     }),
     ClientConnectModule,
-    KeycloakRegistrationModule
+    KeycloakRegistrationModule,
   ],
   controllers: [AppController],
   providers: [

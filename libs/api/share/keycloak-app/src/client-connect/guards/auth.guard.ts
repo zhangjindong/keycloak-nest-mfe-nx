@@ -20,15 +20,15 @@ export class AuthGuard implements CanActivate {
   constructor(
     @Inject(KEYCLOAK_INSTANCE)
     private keycloak: KeycloakConnect.Keycloak,
-    private readonly reflector: Reflector,
+    private readonly reflector: Reflector
   ) {
-    Logger.log('')
+    Logger.log('');
   }
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const isUnprotected = this.reflector.get<boolean>(
       META_UNPROTECTED,
-      context.getHandler(),
+      context.getHandler()
     );
 
     // If unprotected is set skip Keycloak authentication

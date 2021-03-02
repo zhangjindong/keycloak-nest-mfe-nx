@@ -29,7 +29,7 @@ async function bootstrap() {
   const setting = app.get(SETTING);
   const port = setting(app);
   await app.listen(port, () => {
-    Logger.log('http://localhost:' + port + '/','Listening at ');
+    Logger.log('http://localhost:' + port + '/', 'Listening at ');
   });
 }
 // async function bootstrap() {

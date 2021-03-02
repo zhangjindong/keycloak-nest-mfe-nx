@@ -15,16 +15,17 @@ export class ListComponent implements OnInit {
   constructor(
     public contractQuery: ContractQuery,
     public contractService: ContractService,
-    private router:ActivatedRoute
+    private router: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.contractService.get().subscribe();
     this.dataSet$.subscribe((data: any) => (this.dataset = data));
 
-
     this.router.data.pipe().subscribe((v) => console.log('contract data', v));
-    this.router.queryParams.pipe().subscribe((v) => console.log('contract params', v));
+    this.router.queryParams
+      .pipe()
+      .subscribe((v) => console.log('contract params', v));
   }
   onFilterReset() {
     this.dataset = [];

@@ -40,8 +40,6 @@ export class SettingService implements OnApplicationBootstrap {
   }
 
   async onApplicationBootstrap() {
-   
-
     // await this.app.listen(this.config.get('port'));
   }
 }

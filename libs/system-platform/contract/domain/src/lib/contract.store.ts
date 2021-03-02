@@ -7,12 +7,10 @@ export interface ContractState extends EntityState<Contract> {}
 @Injectable({ providedIn: 'root' })
 @StoreConfig({
   name: 'contract',
-  idKey: 'id'
+  idKey: 'id',
 })
 export class ContractStore extends EntityStore<ContractState> {
-
   constructor() {
     super();
   }
-
 }

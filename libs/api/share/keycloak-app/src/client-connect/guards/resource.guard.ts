@@ -16,7 +16,7 @@ import { META_SCOPES } from '../decorators/scopes.decorator';
 declare module 'keycloak-connect' {
   interface Keycloak {
     enforcer(
-      expectedPermissions: string | string[],
+      expectedPermissions: string | string[]
     ): (req: any, res: any, next: any) => any;
   }
 }
@@ -33,17 +33,17 @@ export class ResourceGuard implements CanActivate {
   constructor(
     @Inject(KEYCLOAK_INSTANCE)
     private keycloak: KeycloakConnect.Keycloak,
-    private readonly reflector: Reflector,
+    private readonly reflector: Reflector
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const resource = this.reflector.get<string>(
       META_RESOURCE,
-      context.getClass(),
+      context.getClass()
     );
     const scopes = this.reflector.get<string[]>(
       META_SCOPES,
-      context.getHandler(),
+      context.getHandler()
     );
 
     // No resource given, since we are permissive, allow
@@ -52,7 +52,7 @@ export class ResourceGuard implements CanActivate {
     }
 
     this.logger.verbose(
-      `Protecting resource '${resource}' with scopes: [ ${scopes} ]`,
+      `Protecting resource '${resource}' with scopes: [ ${scopes} ]`
     );
 
     // No scopes given, since we are permissive, allow
@@ -61,7 +61,7 @@ export class ResourceGuard implements CanActivate {
     }
 
     // Build permissions
-    const permissions = scopes.map(scope => `${resource}:${scope}`);
+    const permissions = scopes.map((scope) => `${resource}:${scope}`);
 
     const [request, response] = [
       context.switchToHttp().getRequest(),
@@ -86,7 +86,7 @@ export class ResourceGuard implements CanActivate {
 
 const createEnforcerContext = (request: any, response: any) => (
   keycloak: KeycloakConnect.Keycloak,
-  permissions: string[],
+  permissions: string[]
 ) =>
   new Promise<boolean>((resolve, reject) =>
     keycloak.enforcer(permissions)(request, response, (next: any) => {
@@ -95,5 +95,5 @@ const createEnforcerContext = (request: any, response: any) => (
       } else {
         resolve(true);
       }
-    }),
+    })
   );

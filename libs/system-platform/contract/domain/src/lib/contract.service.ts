@@ -4,9 +4,7 @@ import { ContractStore, ContractState } from './contract.store';
 
 @Injectable()
 export class ContractService extends NgEntityService<ContractState> {
-
   constructor(protected store: ContractStore) {
     super(store);
   }
-
 }

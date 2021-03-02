@@ -5,7 +5,7 @@ import { ApiDocumentService } from './api-document.service';
 @Module({
   imports: [],
   providers: [ApiDocumentService, ApiDocumentProvider],
-  exports: [ApiDocumentService,ApiDocumentProvider],
+  exports: [ApiDocumentService, ApiDocumentProvider],
 })
 export class ApiDocumentModule {
   constructor() {}

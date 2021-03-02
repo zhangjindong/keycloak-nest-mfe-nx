@@ -14,9 +14,9 @@ export class KeycloakRegistrationService {
    */
   getClient(options: Options, clientId: string): Observable<any> {
     return from(keycloakClientRegistration.get(options, clientId)).pipe(
-      catchError(error => {
+      catchError((error) => {
         return of({ code: 500, error });
-      }),
+      })
     );
   }
   /**
@@ -28,7 +28,7 @@ export class KeycloakRegistrationService {
    * @memberof KeycloakRegistrationService
    */
   createClient(options: Options, client: any): Observable<any> {
-    Logger.log('',JSON.stringify(options) )
+    Logger.log('', JSON.stringify(options));
     return from(keycloakClientRegistration.create(options, client));
   }
 }

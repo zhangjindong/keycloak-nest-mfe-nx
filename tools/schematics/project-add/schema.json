@@ -49,7 +49,7 @@
     "feature": {
       "type": "string",
       "description": "领域功能名称domain or user(feature-user)",
-      "default":"domain",
+      "default": "domain",
       "$default": {
         "$source": "argv",
         "index": 0

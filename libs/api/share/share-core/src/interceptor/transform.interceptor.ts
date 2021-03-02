@@ -20,7 +20,7 @@ export class TransformInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     const req = context.getArgByIndex(1).req;
     return next.handle().pipe(
-      map(data => {
+      map((data) => {
         if (!!data) {
           const logFormat = ` <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< TransformInterceptor 正常响应日志
     Request original url: ${req.originalUrl}
@@ -35,7 +35,7 @@ export class TransformInterceptor implements NestInterceptor {
           Logger.access(logFormat);
         }
         return data;
-      }),
+      })
     );
   }
 }

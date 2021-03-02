@@ -13,7 +13,7 @@ export function logger(req: Request, res: Response, next: () => any) {
     Parmas: ${JSON.stringify(req.params)}
     Query: ${JSON.stringify(req.query)}
     Body: ${JSON.stringify(
-      req.body.data,
+      req.body.data
     )} \n  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   `;
   // 根据状态码，进行日志类型区分

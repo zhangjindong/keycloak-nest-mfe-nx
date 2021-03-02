@@ -1,7 +1,7 @@
 // 内部系统对接 API
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
 import { INestApplication, Injectable, Logger } from '@nestjs/common';
-import {  ConfigService } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class ApiDocumentService {
@@ -13,7 +13,7 @@ export class ApiDocumentService {
       version;
       apiPath: 'apidoc';
       tag?: string;
-    },
+    }
   ) {
     const internalOptions = new DocumentBuilder()
       .setTitle(config.title)

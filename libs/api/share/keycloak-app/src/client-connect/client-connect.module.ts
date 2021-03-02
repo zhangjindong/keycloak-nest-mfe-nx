@@ -1,4 +1,4 @@
-import { ShareCoreModule } from '@mfe/api/share/share-core'
+import { ShareCoreModule } from '@mfe/api/share/share-core';
 import { Module } from '@nestjs/common';
 import { ClientConnectProvider } from './client-connect.provider';
 import { KeycloakProvider } from './keycloak.provider';

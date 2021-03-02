@@ -4,6 +4,6 @@ import { KeycloakRegistrationService } from './keycloak-registration.service';
 
 @Module({
   controllers: [KeycloakRegistrationController],
-  providers: [KeycloakRegistrationService]
+  providers: [KeycloakRegistrationService],
 })
 export class KeycloakRegistrationModule {}

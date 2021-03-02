@@ -19,7 +19,7 @@ export class EnvService {
         apiPath: 'apidoc',
         // keycloak
         keycloak: {
-          onload:'login-required', //'login-required','check-sso'
+          onload: 'login-required', //'login-required','check-sso'
           url: 'http://localhost:8081/auth',
           realmName: 'cofco',
           adminUrl: 'http://portal.baoli.com:4200',

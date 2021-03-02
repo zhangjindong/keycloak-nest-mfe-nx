@@ -7,9 +7,7 @@ export interface BreadcrumbState extends EntityState<Breadcrumb> {}
 @Injectable({ providedIn: 'root' })
 @StoreConfig({ name: 'breadcrumb' })
 export class BreadcrumbStore extends EntityStore<BreadcrumbState> {
-
   constructor() {
     super();
   }
-
 }

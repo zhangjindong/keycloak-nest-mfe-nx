@@ -20,17 +20,17 @@ export class RoleGuard implements CanActivate {
   constructor(
     @Inject(KEYCLOAK_INSTANCE)
     private keycloak: KeycloakConnect.Keycloak,
-    private readonly reflector: Reflector,
+    private readonly reflector: Reflector
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const roles = this.reflector.get<string[]>(
       META_ROLES,
-      context.getHandler(),
+      context.getHandler()
     );
     const allowAnyRole = this.reflector.get<boolean>(
       META_ALLOW_ANY_ROLE,
-      context.getHandler(),
+      context.getHandler()
     );
 
     // No roles given, since we are permissive, allow
@@ -44,7 +44,7 @@ export class RoleGuard implements CanActivate {
     if (!accessTokenJWT) {
       // No access token attached, auth guard should have attached the necessary token
       throw new UnauthorizedException(
-        'Are you sure AuthGuard is first in the chain?',
+        'Are you sure AuthGuard is first in the chain?'
       );
     }
 
@@ -55,8 +55,8 @@ export class RoleGuard implements CanActivate {
     // Grab access token from grant
     const accessToken: KeycloakConnect.Token = grant.access_token as any;
     const isInRole = allowAnyRole
-      ? roles.some(r => accessToken.hasRole(r))
-      : roles.every(r => accessToken.hasRole(r));
+      ? roles.some((r) => accessToken.hasRole(r))
+      : roles.every((r) => accessToken.hasRole(r));
 
     return isInRole;
   }

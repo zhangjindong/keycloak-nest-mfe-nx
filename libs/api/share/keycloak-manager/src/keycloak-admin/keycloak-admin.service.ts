@@ -27,7 +27,7 @@ export class KeycloakAdminService {
   constructor(private configService: ConfigService) {
     // this.connectKeycloakServer();
   }
- /*  connectKeycloakServer() {
+  /*  connectKeycloakServer() {
     try {
       process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
       const keycloakConfig = this.configService.get('keycloak');
@@ -130,7 +130,7 @@ export class KeycloakAdminService {
     const adduser$ = from(
       this.kcAdminClient.users.find({
         username: userObj.username,
-      }),
+      })
     ).pipe(
       tap(() => Logger.log('查询用户名是否存在')),
       mergeMap((users: UserRepresentation[]) => {
@@ -147,7 +147,7 @@ export class KeycloakAdminService {
           ? throwError('Email已存在')
           : this.kcAdminClient.groups.find({ search: externalId });
       }),
-      mergeMap(groups => {
+      mergeMap((groups) => {
         if (groups && groups.length > 0 && groups[0].id) {
           groupId = groups[0].id;
           return this.kcAdminClient.users.create(userObj);
@@ -155,12 +155,12 @@ export class KeycloakAdminService {
           return throwError('未找到该组：' + externalId);
         }
       }),
-      tap(value => Logger.log(value, '查询组')),
+      tap((value) => Logger.log(value, '查询组')),
 
-      tap(id => {
+      tap((id) => {
         Logger.log(id, '已创建用户ID');
       }),
-      mergeMap(id => {
+      mergeMap((id) => {
         if (id && id.id !== '') {
           userid = id.id;
           return this.kcAdminClient.users.resetPassword({
@@ -172,9 +172,9 @@ export class KeycloakAdminService {
         }
       }),
       mergeMap(() =>
-        this.kcAdminClient.users.addToGroup({ id: userid, groupId }),
+        this.kcAdminClient.users.addToGroup({ id: userid, groupId })
       ),
-      tap(() => Logger.log('添加到组')),
+      tap(() => Logger.log('添加到组'))
     );
     const userroles: any = user.roles;
     const customerroles: Record<
@@ -186,63 +186,63 @@ export class KeycloakAdminService {
     // ---{A client,customerroles}----------------Aclientid----------Aclient rolelist-----Aclient filter roles----------A{userid,clientid,roles}
     // ---{B client,customerroles}----------------Bclientid----------Bclient rolelist-----Bclient filter roles----------B{userid,clientid,roles}
     const clientid = from(clients).pipe(
-      mergeMap(client =>
+      mergeMap((client) =>
         this.kcAdminClient.clients.find({
           clientId: client,
-        }),
+        })
       ),
-      mergeMap(clients => of(...clients)),
-      map(client => ({ id: client.id, clientId: client.clientId })),
+      mergeMap((clients) => of(...clients)),
+      map((client) => ({ id: client.id, clientId: client.clientId }))
     );
     const rolelist = clientid.pipe(
-      mergeMap(client =>
+      mergeMap((client) =>
         from(
           this.kcAdminClient.clients.listRoles({
             id: client.id,
-          }),
+          })
         ).pipe(
-          map(rolelist => {
+          map((rolelist) => {
             let userrole = userroles.reduce(
               (pre, cur, i) => [...pre, ...customerroles[client.clientId][cur]],
-              [],
+              []
             );
             userrole = Array.from(new Set(userrole));
             return rolelist.filter((role, i, list) => {
               return userrole.includes(role.name);
             });
           }),
-          map(rolelist => ({
+          map((rolelist) => ({
             uuid: client.id,
             clientId: client.clientId,
             roles: rolelist,
-          })),
-        ),
+          }))
+        )
       ),
       scan((acc, cur, i) => [cur, ...acc], []),
       last(),
-      tap(v => Logger.log(v, 'roleList = ')),
+      tap((v) => Logger.log(v, 'roleList = '))
     );
     // const filterRoles = of(rolelist).pipe(
     // map(rolelist=>rolelist.filter((role,i,list)=>customerroles[clientid].includes(role.name)))
     // scan((acc, cur, i) => [cur, ...acc], []),)
     return adduser$.pipe(
       mergeMap(() => rolelist),
-      mergeMap(roleObjs =>
+      mergeMap((roleObjs) =>
         from(roleObjs).pipe(
-          mergeMap(roleObj =>
+          mergeMap((roleObj) =>
             this.kcAdminClient.users.addClientRoleMappings({
               id: userid,
               clientUniqueId: roleObj.uuid,
               roles: roleObj.roles,
-            }),
-          ),
-        ),
+            })
+          )
+        )
       ),
       // tap(result => Logger.log(result, '添加到客户端角色,结果：')),
       mergeMap(() => of({ code: 200, data: '注册成功' })),
-      catchError(error => {
+      catchError((error) => {
         return of({ code: 500, error });
-      }),
+      })
     );
   }
   /**
@@ -262,7 +262,7 @@ export class KeycloakAdminService {
       user = { ...user, email };
     }
     return from(this.kcAdminClient.users.find(user)).pipe(
-      tap(result => Logger.log(result, '检查用户')),
+      tap((result) => Logger.log(result, '检查用户'))
     );
   }
 }

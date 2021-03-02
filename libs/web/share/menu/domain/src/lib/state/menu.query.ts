@@ -4,9 +4,7 @@ import { MenuStore, MenuState } from './menu.store';
 
 @Injectable({ providedIn: 'root' })
 export class MenuQuery extends QueryEntity<MenuState> {
-
   constructor(protected store: MenuStore) {
     super(store);
   }
-
 }

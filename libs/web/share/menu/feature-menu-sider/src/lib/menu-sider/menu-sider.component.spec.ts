@@ -8,9 +8,8 @@ describe('MenuSiderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MenuSiderComponent ]
-    })
-    .compileComponents();
+      declarations: [MenuSiderComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

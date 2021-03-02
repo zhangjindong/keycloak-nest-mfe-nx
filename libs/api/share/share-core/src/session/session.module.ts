@@ -3,7 +3,7 @@ import { SessionProvider } from './session.provider';
 import { StoreProvider } from './store.provider';
 
 @Module({
-  imports:[],
+  imports: [],
   providers: [StoreProvider, SessionProvider],
   exports: [StoreProvider, SessionProvider],
 })
