@@ -1,55 +1,63 @@
-<div nz-row nzGutter="16" class="table-buttongroup box-block">
-  <nz-space>
-    <nz-space-item>
-      <button
-        (click)="onFilterReset()"
-        class="primary-color-2"
-        nz-button
-        nzType="default"
-      >
-        <i nz-icon nzType="reload"></i>重置
-      </button>
-    </nz-space-item>
-    <nz-space-item>
-      <button nz-button nzType="primary" (click)="onEdit()">编辑</button>
-    </nz-space-item>
-    <nz-space-item>
-      <button nz-button nzType="primary" (click)="onAdd()">新增</button>
-    </nz-space-item>
-  </nz-space>
+<div nz-row nzJustify="end">
+  <div nz-col nzSpan="5" class="text-right">
+    <nz-space>
+      <nz-space-item>
+        <button
+          (click)="onFilterReset()"
+          class="primary-color-2"
+          nz-button
+          nzType="default"
+        >
+          <i nz-icon nzType="reload"></i>重置
+        </button>
+      </nz-space-item>
+      <nz-space-item>
+        <button nz-button nzType="primary" (click)="onEdit()">编辑</button>
+      </nz-space-item>
+      <nz-space-item>
+        <button nz-button nzType="primary" (click)="onAdd()">新增</button>
+      </nz-space-item>
+    </nz-space>
+  </div>
 </div>
 
 <nz-table #basicTable [nzData]="dataset">
   <thead>
     <tr>
+      <th nzWidth="60px"></th>
       <th>合同总金额</th>
       <th>合同名称</th>
       <th>合同编号</th>
-      <th>粮信编码展示</th>
+      <!-- <th>粮信编码展示</th> -->
       <th>失效日期</th>
-      <th>发票编码展示</th>
+      <!-- <th>发票编码展示</th> -->
       <th>甲方名称</th>
       <!-- <th>甲方机构oid</th> -->
       <th>乙方名称</th>
       <!-- <th>乙方机构oid</th> -->
-      <th>应收账款编码</th>
+      <!-- <th>应收账款编码</th> -->
       <th>签订日期</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of basicTable.data">
-      <td>{{ data.contractAmt }}</td>
+      <td
+        nzShowCheckbox
+        [nzChecked]="data.isSelect"
+      ></td>
+
+      <td>{{ data.contractAmt | thousands }}</td>
       <td>{{ data.contractName }}</td>
       <td>{{ data.contractNo }}</td>
-      <td>{{ data.creditcode }}</td>
-      <td>{{ data.expireDate }}</td>
-      <td>{{ data.invoicecode }}</td>
+      <!-- <td>{{ data.creditcode }}</td> -->
+      <td>{{ data.expireDate | date: 'yyyy-MM-dd' }}</td>
+      <!-- <td>{{ data.invoicecode }}</td> -->
       <td>{{ data.partyAname }}</td>
       <!-- <td>{{ data.partyAoid }}</td> -->
       <td>{{ data.partyBname }}</td>
       <!-- <td>{{ data.partyBoid }}</td> -->
-      <td>{{ data.receivcode }}</td>
-      <td>{{ data.signDate }}</td>
+      <!-- <td>{{ data.receivcode }}</td> -->
+      <td>{{ data.signDate | date: 'yyyy-MM-dd' }}</td>
     </tr>
   </tbody>
 </nz-table>

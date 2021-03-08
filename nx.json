@@ -72,6 +72,18 @@
     },
     "web-share-breadcrumb-feature-breadcrumb": {
       "tags": []
+    },
+    "web-share-base": {
+      "tags": []
+    },
+    "system-platform-news-domain": {
+      "tags": []
+    },
+    "system-platform-news-feature-list": {
+      "tags": []
+    },
+    "system-platform-news-feature-detail": {
+      "tags": []
     }
   }
 }

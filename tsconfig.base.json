@@ -48,6 +48,16 @@
       ],
       "@mfe/web/share/breadcrumb/feature-breadcrumb": [
         "libs/web/share/breadcrumb/feature-breadcrumb/src/index.ts"
+      ],
+      "@mfe/web/share/base": ["libs/web/share/base/src/index.ts"],
+      "@mfe/system-platform/news/domain": [
+        "libs/system-platform/news/domain/src/index.ts"
+      ],
+      "@mfe/system-platform/news/feature-list": [
+        "libs/system-platform/news/feature-list/src/index.ts"
+      ],
+      "@mfe/system-platform/news/feature-detail": [
+        "libs/system-platform/news/feature-detail/src/index.ts"
       ]
     }
   },

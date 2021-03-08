@@ -602,6 +602,131 @@
           "style": "scss"
         }
       }
+    },
+    "web-share-base": {
+      "projectType": "library",
+      "root": "libs/web/share/base",
+      "sourceRoot": "libs/web/share/base/src",
+      "prefix": "mfe",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/web/share/base/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/web/share/base/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "system-platform-news-domain": {
+      "projectType": "library",
+      "root": "libs/system-platform/news/domain",
+      "sourceRoot": "libs/system-platform/news/domain/src",
+      "prefix": "mfe",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/system-platform/news/domain/tsconfig.lib.json",
+              "libs/system-platform/news/domain/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/system-platform/news/domain/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/system-platform/news/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "system-platform-news-feature-list": {
+      "projectType": "library",
+      "root": "libs/system-platform/news/feature-list",
+      "sourceRoot": "libs/system-platform/news/feature-list/src",
+      "prefix": "mfe",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/system-platform/news/feature-list/tsconfig.lib.json",
+              "libs/system-platform/news/feature-list/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/system-platform/news/feature-list/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/system-platform/news/feature-list/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "system-platform-news-feature-detail": {
+      "projectType": "library",
+      "root": "libs/system-platform/news/feature-detail",
+      "sourceRoot": "libs/system-platform/news/feature-detail/src",
+      "prefix": "mfe",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/system-platform/news/feature-detail/tsconfig.lib.json",
+              "libs/system-platform/news/feature-detail/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/system-platform/news/feature-detail/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/system-platform/news/feature-detail/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

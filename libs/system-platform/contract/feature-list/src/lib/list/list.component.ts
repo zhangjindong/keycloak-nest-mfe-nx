@@ -21,11 +21,6 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.contractService.get().subscribe();
     this.dataSet$.subscribe((data: any) => (this.dataset = data));
-
-    this.router.data.pipe().subscribe((v) => console.log('contract data', v));
-    this.router.queryParams
-      .pipe()
-      .subscribe((v) => console.log('contract params', v));
   }
   onFilterReset() {
     this.dataset = [];

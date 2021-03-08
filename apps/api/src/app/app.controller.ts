@@ -16,6 +16,7 @@ export class AppController {
     return this.appService.getData();
   }
 
+  
   @Get('menu')
   @Public()
   getMenus() {

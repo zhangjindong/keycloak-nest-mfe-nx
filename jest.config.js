@@ -30,5 +30,9 @@ module.exports = {
     '<rootDir>/libs/web/share/menu/feature-menu-sider',
     '<rootDir>/libs/web/share/breadcrumb/domain',
     '<rootDir>/libs/web/share/breadcrumb/feature-breadcrumb',
+    '<rootDir>/libs/web/share/base',
+    '<rootDir>/libs/system-platform/news/domain',
+    '<rootDir>/libs/system-platform/news/feature-list',
+    '<rootDir>/libs/system-platform/news/feature-detail',
   ],
 };

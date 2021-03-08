@@ -8,7 +8,7 @@
     nzTheme="light"
   > -->
 <div class="sidebar-logo">
-  <a href="/" target="_blank">
+  <a href="/">
     <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo" />
     <h1>MFE微前端</h1>
   </a>
@@ -27,7 +27,6 @@
             <a
               [disabled]="!subitem.forwardUrl"
               [routerLink]="subitem.forwardUrl"
-              [queryParams]="{ breadcrumb: subitem.name }"
               >{{ subitem.name }}</a
             >
           </li></ng-container
